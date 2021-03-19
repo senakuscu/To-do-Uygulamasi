@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>GorevEkle1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#bDate").datepicker({
+                format: 'dd-mm-yyyy',
+                autoclose: true,
+            }).on('changeDate', function (selected) {
+                var minDate = new Date(selected.date.valueOf());
+                $('#sDate').datepicker('setStartDate', minDate);
+            });
+
+            $("#sDate").datepicker({
+                format: 'dd-mm-yyyy',
+                autoclose: true,
+            }).on('changeDate', function (selected) {
+                var minDate = new Date(selected.date.valueOf());
+                $('#bDate').datepicker('setEndDate', minDate);
+            });
+        });
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <ul class="nav nav-pills" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link" href="kisi1.html">Kisi1</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="gorevler1.html">Gorevler</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="gorevekle1.html">Gorev Ekle</a>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="content" class="container tab-pane active">
+                <br>
+                <div class="container">
+                    <h2> FORM </h2>
+
+                    <form action="/gorevEkle" class="needs-validation" id="form">
+
+                        <div class="form-group">
+                            <label for="name">Id:</label>
+                            <input type="text" class="form-control" id="id" placeholder="Id " name="id" style="width:400px" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="usurname">Adi:</label>
+                            <input type="text" class="form-control" id="adi" placeholder="Adi" name="adi" style="width:400px" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="my-1 mr-2" for="kategori">Kategorisi</label>
+                            <select class="custom-select my-1 mr-sm-2" id="kategori" name="kategori" style="width:400px" required>
+                                <option selected> Kategori: </option>
+                                <option value="1">Analiz</option>
+                                <option value="2">Tasarim</option>
+                                <option value="3">Kodlama</option>
+                                <option value="4">Test</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="aciklama">Aciklamasi:</label>
+                            <input type="text" class="form-control" id="aciklama" placeholder="Aciklamasi " name="aciklama" style="width:400px" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="bDate">Baslangic Tarihi:</label>
+                            <input type="text" class="form-control" id="bDate" placeholder="Baslangic" name="bDate" style="width:400px" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="sDate">Bitis Tarihi:</label>
+                            <input type="text" class="form-control" id="sDate" placeholder="Bitis" name="sDate" style="width:400px" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="my-1 mr-2" for="durumu">Durumu:</label>
+                            <select class="custom-select my-1 mr-sm-2" id="durumu" name="durumu" style="width:400px" required>
+                                <option selected>Durum </option>
+                                <option value="1">Beklemede</option>
+                                <option value="2">Devam Ediyor</option>
+                                <option value="3">Tamamlandi</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" name="onaylama" required> Girilen bilgileri kabul ediyorum
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" id="tamamla">Gorev Ekle</button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

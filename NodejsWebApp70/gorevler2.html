@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Gorevler2</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<script>
+    window.onload = function laodData() {
+        fetch("http://localhost:1337/gorevler2")
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                console.log(data);
+                data.forEach((e) => {
+                    if (e.durumu) {
+                        const node1 = document.createElement("div");
+                        const textnode1 = document.createTextNode(
+                            `Gorev Ad: ${e.adi}`
+                        );
+                        node1.appendChild(textnode1);
+
+                        const node2 = document.createElement("div");
+                        const textnode2 = document.createTextNode(
+                            `Aciklamasi: ${e.aciklama}`
+                        );
+                        node2.appendChild(textnode2);
+
+                        const node3 = document.createElement("div");
+                        const textnode3 = document.createTextNode(
+                            `Baslangic tarihi: ${e.bDate}`
+                        );
+                        node3.appendChild(textnode3);
+
+                        const node4 = document.createElement("div");
+                        const textnode4 = document.createTextNode(
+                            `Bitis tarihi: ${e.sDate}`
+                        );
+                        node4.appendChild(textnode4);
+
+                        const node6 = document.createElement("div");
+                        const textnode6 = document.createTextNode(
+                            `Kategorisi: ${e.kategori}`
+                        );
+                        node6.appendChild(textnode6);
+
+                        const element = document.getElementById(e.durumu);
+                        element.appendChild(node1);
+                        element.appendChild(node2);
+                        element.appendChild(node6);
+                        element.appendChild(node3);
+                        element.appendChild(node4);
+                        const node5 = document.createElement("aa");
+                        element.appendChild(node5);
+                    }
+                });
+            })
+            .catch(function (error) {
+                console.log("aaaa ", error);
+            });
+    };
+</script>
+<body>
+    <div class="container">
+        <ul class="nav nav-pills" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link" href="kisi1.html">Kisi2</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="gorevler2.html">Gorevler</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="gorevekle2.html">Gorev Ekle</a>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="gorevler2" class="container tab-pane active"></div>
+            <br />
+            <div class="container" style="margin-top: 40px"></div>
+            <div class="row">
+                <div class="col-sm-4" id="1">
+                    <h3>Bekleyen</h3>
+                </div>
+
+                <div class="col-sm-4" id="2">
+                    <h3>Devam Eden </h3>
+                </div>
+
+                <div class="col-sm-4" id="3">
+                    <h3>Tamamlanan </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
